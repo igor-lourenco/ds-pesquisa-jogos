@@ -13,6 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -43,6 +44,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
+	}
+	
+	@Bean
+	public CorsFilter corsFilter() {
+	    final CorsConfiguration config = new CorsConfiguration();
+	    config.addAllowedHeader("*");
+	    config.addAllowedMethod("GET");
+	    config.addAllowedMethod("POST");
+	    config.addAllowedMethod("PUT");
+	    config.addAllowedMethod("OPTIONS");
+	    config.setMaxAge(3600L);
+
+	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    source.registerCorsConfiguration("/**", config);
+
+	    return new CorsFilter(source);
 	}
 }
 
