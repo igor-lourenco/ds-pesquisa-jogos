@@ -7,7 +7,7 @@ type Props = {
     activePage: number;
 }
 
-const Pagination = ({ totalPages = 0, goToPage, activePage }: Props) => {
+const Pagination = ({ totalPages = 0, goToPage, activePage }: Props) => { //Pagina inicial da aplicação
     const paginationItems = Array.from(Array(totalPages).keys());
     return (
         <div className="pagination-container">

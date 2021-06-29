@@ -6,28 +6,25 @@ import { useState } from "react";
 import { RecordsResponse } from './types';
 import {formatDate} from './helpers'
 import Pagination  from './Pagination'
+import Filters from "../../components/Filters";
 
-const BASE_URL = 'http://localhost:8080'
+const BASE_URL = 'http://localhost:8080'  //Tela de listagem
 const Records = () => {
     const [recordsResponse, setRecordsReponse] = useState<RecordsResponse>();
     const [activePage, setActivePage] = useState(0);
-
-
 
     useEffect(() => {
         axios.get(`${BASE_URL}/records?size=12&page=${activePage}`).
             then(response => setRecordsReponse(response.data));
     }, [activePage]);
 
-
     const hendlePageChange = (index : number) => {
         setActivePage(index);
     }
 
-
-
     return (
         <div className="page-container">
+           <Filters link="/charts" linkText="VER GRÁFICO"/>
             <table className="records-table" cellPadding="0" cellSpacing="0">
                 <thead>
                     <tr>

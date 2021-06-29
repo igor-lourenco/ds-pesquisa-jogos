@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Routes from './Routes';
 
-function App() {
+function App() { //Inicio da aplicação
   return (
     <Routes />
   );

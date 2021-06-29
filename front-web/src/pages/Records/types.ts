@@ -1,5 +1,5 @@
 
-export type RecordsResponse = {
+export type RecordsResponse = { //Campos da lista
     content : RecordItem[];
     totalPages : number;
 }
